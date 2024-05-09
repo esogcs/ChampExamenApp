@@ -185,7 +185,7 @@ public class ChampExamenApplication extends Application {
         mcqGroup.selectToggle(null);
 
     }
-    // Save ExamAnswers (Empty)
+    // Save ExamAnswers (Not Functional)
     private void saveExamAnswers() {}
 
     // Create Exam Page Method
@@ -316,11 +316,12 @@ public class ChampExamenApplication extends Application {
         QuestionBank qb = new QuestionBank();
         qb.readTFQ("C:\\Users\\super\\IdeaProjects\\ChampExamen_by_Jose\\src\\main\\resources\\champqcsoft\\org\\champexamen_by_jose\\tfq.txt");
         qb.readMCQ("C:\\Users\\super\\IdeaProjects\\ChampExamen_by_Jose\\src\\main\\resources\\champqcsoft\\org\\champexamen_by_jose\\mcq.txt");
+        qb.printAllQuestions();
 
-        // Print 10 questions randomly of type TFQ or MCQ
-        int[] randomAmountOfQuestions = new int[10];
+        // Print X amount of questions randomly of type TFQ or MCQ
+        int[] randomAmountOfQuestions = new int[3];
         for (int i = 0; i < randomAmountOfQuestions.length; i++) {
-            randomAmountOfQuestions[i] = random.nextInt(65);
+            randomAmountOfQuestions[i] = random.nextInt(65);    // Max amount of questions: 65
         }
 
         LinkedList<Question> questions = qb.selectRandQuestions(randomAmountOfQuestions);
