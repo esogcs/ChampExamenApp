@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Optional;
+import java.util.Random;
 
 public class ChampExamenApplication extends Application {
 
@@ -297,7 +298,6 @@ public class ChampExamenApplication extends Application {
         public void handle(ActionEvent actionEvent) {
             clearExamAnswers();
             System.out.println("Cleared Submitted Answers");
-
         }
     }
 
@@ -306,16 +306,21 @@ public class ChampExamenApplication extends Application {
     public void start(Stage primaryStage) throws FileNotFoundException {
         primaryStage.setTitle("Champlain Exam App");
         root = new VBox();
+        Random random = new Random();
 
-        // Read TFC MCQ files
+        // Read TFC & MCQ files
         QuestionBank qb = new QuestionBank();
-        // qb.readTFQ("C:\\Users\\super\\IdeaProjects\\ChampExamen_by_Jose\\src\\main\\resources\\champqcsoft\\org\\champexamen_by_jose\\tfq.txt");
+        qb.readTFQ("C:\\Users\\super\\IdeaProjects\\ChampExamen_by_Jose\\src\\main\\resources\\champqcsoft\\org\\champexamen_by_jose\\tfq.txt");
         qb.readMCQ("C:\\Users\\super\\IdeaProjects\\ChampExamen_by_Jose\\src\\main\\resources\\champqcsoft\\org\\champexamen_by_jose\\mcq.txt");
 
-        // Select Amount of Questions (x: 10)
-        int[] index_s = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
-        LinkedList<Question> exam_questions = qb.selectRandQuestions(index_s);
-        this.exam = new Exam(exam_questions);
+        // Print 10 questions randomly of type TFQ or MCQ
+        int[] randomAmountOfQuestions = new int[10];
+        for (int i = 0; i < randomAmountOfQuestions.length; i++) {
+            randomAmountOfQuestions[i] = random.nextInt(65);
+        }
+
+        LinkedList<Question> questions = qb.selectRandQuestions(randomAmountOfQuestions);
+        this.exam = new Exam(questions);
 
         // Clear existing children and add the new page
         root.getChildren().clear();
