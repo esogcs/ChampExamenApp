@@ -212,11 +212,15 @@ public class ChampExamenApplication extends Application {
 
     // Build MCQ Method
     public VBox buildMCQ(int questionNumber, MCQQuestion mcqQuestion) {
+        // Create Label for question text
         String str = String.format("%d ) %s", questionNumber + 1, mcqQuestion.getQuestionText());
         Label mcqLabel = new Label(str);
         mcqLabel.setFont(new Font("Arial", 14));
 
+        // Create ToggleGroup for MCQ questions
         ToggleGroup mcqGroup = new ToggleGroup();
+
+        // Create RadioButtons to set the options
         RadioButton mcqOptionA = new RadioButton("A. " + mcqQuestion.getOptions().get(0));
         RadioButton mcqOptionB = new RadioButton("B. " + mcqQuestion.getOptions().get(1));
         RadioButton mcqOptionC = new RadioButton("C. " + mcqQuestion.getOptions().get(2));
@@ -234,6 +238,7 @@ public class ChampExamenApplication extends Application {
         mcqOptionD.setToggleGroup(mcqGroup);
         mcqOptionD.setOnAction(e -> setQuestionAnswer(questionNumber, "D"));
 
+        // Create VBox container for MCQ
         VBox mcqContainer = new VBox(10);
         mcqContainer.getChildren().addAll(mcqLabel, mcqOptionA, mcqOptionB, mcqOptionC, mcqOptionD);
         mcqContainer.setAlignment(Pos.CENTER);
@@ -262,7 +267,6 @@ public class ChampExamenApplication extends Application {
 
         // Container for VBox
         VBox container = new VBox(10);
-        container.setPadding(new Insets(10));
 
         // Add RadioButtons to the container
         container.getChildren().addAll(questionLabel, trueRadioButton, falseRadioButton);
