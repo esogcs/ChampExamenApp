@@ -51,11 +51,9 @@ public class QuestionBank {
                         MCQQuestion MCQuestion = new MCQQuestion(MCQAnswer, MCQText, QuestionType.MCQ, options);
                         questions.add(MCQuestion);
                         sameQuestion = false;
-
                     }
-
                 }
-                if(sc.hasNextLine()) sc.nextLine();
+                if (sc.hasNextLine()) sc.nextLine();
             }
             sc.close();
         } catch (FileNotFoundException e) {
