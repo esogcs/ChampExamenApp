@@ -12,7 +12,7 @@ The user can then submit his answers for the questions and get their grade in re
 **Note**: The filename directories need to be changed to the user's personal computer directories.
 
 # About App
-This application was made for my Java OOP class, it is the 1st year final project.
+This application was made for my Java OOP class
 ## Future Functions
 The majority of these functions are purely cosmetic as they were extras to my project, but I wish in the future to be able to work on them.
 ### To Work on
